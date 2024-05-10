@@ -1,14 +1,14 @@
 import pydantic
 
-import src.models.scheme
+import arqanmode
 
 
 class RegisterInput(pydantic.BaseModel):
     model_name: str
-    scheme: src.models.scheme.SchemeV1
+    scheme: arqanmode.SchemeV1
 
-    @pydantic.model_validator(mode='before')
     @classmethod
+    @pydantic.model_validator(mode='before')
     def check_not_none(cls, data):
         if isinstance(data, dict):
             assert ('scheme' in data), "field scheme must not be omitted"

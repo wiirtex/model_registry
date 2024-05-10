@@ -1,13 +1,12 @@
-from typing import Literal
-
 import fastapi
 import uvicorn
+from typing import Literal
 
 import src.app.routes
-import src.db.inmemory
+import src.db.inmemory.db
 
 app = fastapi.FastAPI()
-db: src.db.Database = src.db.inmemory.InMemoryDatabase()
+db: src.db.Database = src.db.inmemory.db.InMemoryDatabase()
 src.app.routes.register(app, db)
 
 

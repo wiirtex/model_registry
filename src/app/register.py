@@ -2,7 +2,6 @@ import fastapi
 
 import src.db
 import src.models.models
-import src.models.scheme
 
 
 class Router:
@@ -25,7 +24,7 @@ class Router:
 
         inp = src.db.interface.CreateModelInput.model_validate({
             'model': {
-                'name': req.model_name,
+                'model_name': req.model_name,
                 'scheme': req.scheme
             }
         })

@@ -1,13 +1,19 @@
+import typing
+
 import pydantic
 
-import src.models.scheme
+import arqanmode
+
+
+class ListModelsResponse(pydantic.BaseModel):
+    models: typing.List[arqanmode.ModelV1]
 
 
 class CreateModelInput(pydantic.BaseModel):
-    model: src.models.scheme.ModelV1
+    model: arqanmode.ModelV1
 
-    @pydantic.model_validator(mode='before')
     @classmethod
+    @pydantic.model_validator(mode='before')
     def check_not_none(cls, data):
         if isinstance(data, dict):
             assert ('model' in data), "field scheme must not be omitted"

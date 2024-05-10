@@ -2,7 +2,6 @@ import fastapi
 
 import src.db
 import src.models.models
-import src.models.scheme
 
 
 class Router:

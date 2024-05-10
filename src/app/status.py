@@ -9,8 +9,8 @@ class Router:
         self.db = db
 
         self.router = fastapi.APIRouter(
-            prefix="/list",
-            tags=["list"],
+            prefix="/status",
+            tags=["status"],
         )
 
         self.router.add_api_route(path='/',
@@ -19,6 +19,6 @@ class Router:
         pass
 
     async def endpoint(self):
-        resp = self.db.list_models()
-
-        return resp
+        return {
+            "status": "ok"
+        }

@@ -1,14 +1,13 @@
 import abc
-import typing
 
-import src.db.interface
-import src.models.scheme
+import arqanmode
+import src.db.interface as interface
 
 
 class Database(abc.ABC):
 
     @abc.abstractmethod
-    def create_model(self, data: interface.CreateModelInput) -> src.models.scheme.ModelV1:
+    def create_model(self, data: interface.CreateModelInput) -> arqanmode.ModelV1:
         pass
 
     @abc.abstractmethod
@@ -16,5 +15,5 @@ class Database(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def list_models(self) -> typing.List[src.models.scheme.ModelV1]:
+    def list_models(self) -> interface.ListModelsResponse:
         pass
