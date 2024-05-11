@@ -2,15 +2,15 @@ import typing
 
 import pydantic
 
-import arqanmode
+from src.db.scheme import Model
 
 
 class ListModelsResponse(pydantic.BaseModel):
-    models: typing.List[arqanmode.ModelV1]
+    models: typing.List[Model]
 
 
 class CreateModelInput(pydantic.BaseModel):
-    model: arqanmode.ModelV1
+    model: Model
 
     @classmethod
     @pydantic.model_validator(mode='before')
@@ -21,4 +21,12 @@ class CreateModelInput(pydantic.BaseModel):
 
 
 class DeleteModelInput(pydantic.BaseModel):
+    model_name: str
+
+
+class PauseModelInput(pydantic.BaseModel):
+    model_name: str
+
+
+class UnpauseModelInput(pydantic.BaseModel):
     model_name: str

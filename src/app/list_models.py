@@ -19,6 +19,6 @@ class Router:
         pass
 
     async def endpoint(self):
-        resp = self.db.list_models()
+        resp = self.db.list_active_models()
 
         return resp

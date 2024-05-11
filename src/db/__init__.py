@@ -15,5 +15,13 @@ class Database(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def list_models(self) -> interface.ListModelsResponse:
+    def list_active_models(self) -> interface.ListModelsResponse:
+        pass
+
+    @abc.abstractmethod
+    def pause_model(self, data: interface.PauseModelInput) -> None:
+        pass
+
+    @abc.abstractmethod
+    def unpause_model(self, data: interface.UnpauseModelInput) -> None:
         pass

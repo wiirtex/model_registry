@@ -24,8 +24,11 @@ class Router:
 
         inp = src.db.interface.CreateModelInput.model_validate({
             'model': {
-                'model_name': req.model_name,
-                'scheme': req.scheme
+                'model': {
+                    'model_name': req.model_name,
+                    'scheme': req.scheme
+                },
+                'active': True,
             }
         })
         resp = self.db.create_model(inp)

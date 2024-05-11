@@ -17,3 +17,11 @@ class RegisterInput(pydantic.BaseModel):
 
 class UnregisterInput(pydantic.BaseModel):
     name: str
+
+
+class PauseModelInput(pydantic.BaseModel):
+    name: str
+
+
+class UnpauseModelInput(pydantic.BaseModel):
+    name: str
