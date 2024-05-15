@@ -1,6 +1,7 @@
+from typing import Literal
+
 import fastapi
 import uvicorn
-from typing import Literal
 
 import src.app.routes
 import src.db.inmemory.db
@@ -16,7 +17,7 @@ def main():
 
 def start_server(host='127.0.0.1', port=8000, num_workers=4,
                  loop: Literal["none", "auto", "asyncio", "uvloop"] = 'auto', reload=False):
-    uvicorn.run('src.main:app', host=host,
+    uvicorn.run('main:app', host=host,
                 port=port,
                 workers=num_workers,
                 loop=loop,

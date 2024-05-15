@@ -287,6 +287,31 @@ test = ["anyio[trio]", "coverage[toml] (>=7)", "exceptiongroup (>=1.2.0)", "hypo
 trio = ["trio (>=0.23)"]
 
 [[package]]
+name = "arqanmode"
+version = "0.0.10"
+description = "rebuild with poetry"
+optional = false
+python-versions = ">=3.12,<4.0"
+files = [
+    {file = "arqanmode-0.0.10-py3-none-any.whl", hash = "sha256:d7a8103b2da5371e85eee0c864a57e662fbb46010ea28cb253122fec4ef05aa3"},
+    {file = "arqanmode-0.0.10.tar.gz", hash = "sha256:3ecf1b47656e29456ff2315e371295b4107565a092aba0647c06f864b8674e5a"},
+]
+
+[package.dependencies]
+aiokafka = ">=0.10.0"
+loguru = ">=0.5.3"
+pydantic = ">=2.5.3"
+pytest = ">=8.2.0,<9.0.0"
+redis = ">=5.0.4,<6.0.0"
+requests = ">=2.31.0"
+setuptools = ">=69.2.0"
+
+[package.source]
+type = "legacy"
+url = "https://test.pypi.org/simple"
+reference = "test"
+
+[[package]]
 name = "async-timeout"
 version = "4.0.3"
 description = "Timeout context manager for asyncio programs"
@@ -2232,23 +2257,23 @@ files = [
 
 [[package]]
 name = "pytest"
-version = "7.4.4"
+version = "8.2.0"
 description = "pytest: simple powerful testing with Python"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 files = [
-    {file = "pytest-7.4.4-py3-none-any.whl", hash = "sha256:b090cdf5ed60bf4c45261be03239c2c1c22df034fbffe691abe93cd80cea01d8"},
-    {file = "pytest-7.4.4.tar.gz", hash = "sha256:2cf0005922c6ace4a3e2ec8b4080eb0d9753fdc93107415332f50ce9e7994280"},
+    {file = "pytest-8.2.0-py3-none-any.whl", hash = "sha256:1733f0620f6cda4095bbf0d9ff8022486e91892245bb9e7d5542c018f612f233"},
+    {file = "pytest-8.2.0.tar.gz", hash = "sha256:d507d4482197eac0ba2bae2e9babf0672eb333017bcedaa5fb1a3d42c1174b3f"},
 ]
 
 [package.dependencies]
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
 iniconfig = "*"
 packaging = "*"
-pluggy = ">=0.12,<2.0"
+pluggy = ">=1.5,<2.0"
 
 [package.extras]
-testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
+dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
 [[package]]
 name = "pytest-asyncio"
@@ -3503,4 +3528,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "43db2a16429b9d5aff10858b0457c5a961ed10914e27dbd770aa3cd7f71bacd6"
+content-hash = "760d5ad30eea84b1f896cdffd5ec9abb8bd1f4a66f4158bec2244f1c63849796"
