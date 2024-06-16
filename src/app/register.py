@@ -25,9 +25,8 @@ class Router:
     async def endpoint(self, request: Request):
         req = src.models.models.RegisterInput.model_validate(json.loads(await request.json()))
 
-        origin_url = dict(request.headers).get(b"host", b"").decode()
-        print(origin_url)
-
+        origin_url = dict(request.headers).get('referrer')
+        
         inp = src.db.interface.CreateModelInput.model_validate({
             'model': {
                 'model': {
@@ -35,7 +34,7 @@ class Router:
                     'scheme': req.scheme
                 },
                 'active': True,
-                'url': origin_url
+                'port': origin_url
             }
         })
         resp = self.db.create_model(inp)

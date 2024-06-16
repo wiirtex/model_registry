@@ -46,13 +46,10 @@ class PostgresDatabase(src.db.Database):
             minconn=2,
         )
 
-        print("here")
         with self.db_cursor() as curr:
             curr.execute("create table if not exists models (name text primary key, interface jsonb)")
 
             curr.execute("select * from models")
-            print(curr.fetchall())
-            print("here 2")
 
     def create_model(self, data: src.db.interface.CreateModelInput) -> arqanmode.ModelV1:
         with self.db_cursor() as curr:
