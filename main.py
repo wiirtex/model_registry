@@ -6,9 +6,26 @@ import uvicorn
 import src.app.routes
 import src.db.inmemory.db
 
+# class MyMiddleware:
+#
+#     async def __call__(self, request: Request, call_next):
+#         # do something with the request object
+#         print(await request.json())
+#         print(json.loads(await request.json()))
+#
+#         # process the request and get the response
+#         response = await call_next(request)
+#
+#         return response
+
+
 app = fastapi.FastAPI()
-db: src.db.Database = src.db.inmemory.db.InMemoryDatabase()
+# app.add_middleware(BaseHTTPMiddleware, dispatch=MyMiddleware())
+db = src.db.inmemory.db.InMemoryDatabase()
 src.app.routes.register(app, db)
+
+
+# src.app.crons.start_background_tasks(app, db)
 
 
 def main():

@@ -288,28 +288,25 @@ trio = ["trio (>=0.23)"]
 
 [[package]]
 name = "arqanmode"
-version = "0.0.10"
+version = "0.0.12rc7"
 description = "rebuild with poetry"
 optional = false
-python-versions = ">=3.12,<4.0"
-files = [
-    {file = "arqanmode-0.0.10-py3-none-any.whl", hash = "sha256:d7a8103b2da5371e85eee0c864a57e662fbb46010ea28cb253122fec4ef05aa3"},
-    {file = "arqanmode-0.0.10.tar.gz", hash = "sha256:3ecf1b47656e29456ff2315e371295b4107565a092aba0647c06f864b8674e5a"},
-]
+python-versions = "^3.12"
+files = []
+develop = false
 
 [package.dependencies]
 aiokafka = ">=0.10.0"
 loguru = ">=0.5.3"
 pydantic = ">=2.5.3"
-pytest = ">=8.2.0,<9.0.0"
-redis = ">=5.0.4,<6.0.0"
+pytest = "^8.2.0"
+redis = "^5.0.4"
 requests = ">=2.31.0"
 setuptools = ">=69.2.0"
 
 [package.source]
-type = "legacy"
-url = "https://test.pypi.org/simple"
-reference = "test"
+type = "directory"
+url = "../arqanmode"
 
 [[package]]
 name = "async-timeout"
@@ -3528,4 +3525,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "760d5ad30eea84b1f896cdffd5ec9abb8bd1f4a66f4158bec2244f1c63849796"
+content-hash = "2b68c1ddcb969f54e95787dc0e400789752535b2cc4add7dbe165964c14c2d4b"
