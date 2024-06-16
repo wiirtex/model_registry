@@ -1,10 +1,21 @@
 import abc
+import dataclasses
 
 import arqanmode
 import src.db.interface as interface
 
 
 class Database(abc.ABC):
+    @dataclasses.dataclass
+    class Config:
+        dbname: str
+        user: str
+        password: str
+        host: str
+
+    @abc.abstractmethod
+    def __init__(self, config: Config):
+        pass
 
     @abc.abstractmethod
     def create_model(self, data: interface.CreateModelInput) -> arqanmode.ModelV1:

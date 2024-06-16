@@ -6,7 +6,7 @@ from src.db.scheme import Model
 
 
 class InMemoryDatabase(src.db.Database):
-    def __init__(self):
+    def __init__(self, config: src.db.Database.Config):
         self.data: typing.Dict[str, Model] = dict()
 
     def create_model(self, data: src.db.interface.CreateModelInput) -> arqanmode.ModelV1:

@@ -22,11 +22,11 @@ class Router:
                                   methods=['post'])
         pass
 
-    async def endpoint(self, req: Request):
-        # : src.models.models.RegisterInput
-        # print(type(req), req)
+    async def endpoint(self, request: Request):
+        req = src.models.models.RegisterInput.model_validate(json.loads(await request.json()))
 
-        req = src.models.models.RegisterInput.model_validate(json.loads(await req.json()))
+        origin_url = dict(request.headers).get(b"host", b"").decode()
+        print(origin_url)
 
         inp = src.db.interface.CreateModelInput.model_validate({
             'model': {
@@ -35,6 +35,7 @@ class Router:
                     'scheme': req.scheme
                 },
                 'active': True,
+                'url': origin_url
             }
         })
         resp = self.db.create_model(inp)

@@ -1,4 +1,5 @@
 import fastapi
+from starlette.requests import Request
 
 import src.db
 import src.models.models
@@ -19,12 +20,10 @@ class Router:
                                   methods=['post'])
         pass
 
-    async def endpoint(self, req: src.models.models.UnregisterInput):
-        print(type(req), req)
+    async def endpoint(self, req: Request):
+        req = src.db.interface.DeleteModelInput.model_validate(await req.json())
 
         inp = src.db.interface.DeleteModelInput.model_validate({
-            'model_name': req.name
+            'model_name': req.model_name
         })
-        resp = self.db.delete_model(inp)
-
-        return resp
+        self.db.delete_model(inp)

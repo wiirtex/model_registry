@@ -4,7 +4,8 @@ import fastapi
 import uvicorn
 
 import src.app.routes
-import src.db.inmemory.db
+import src.crons.crons
+import src.db.postgres.db
 
 # class MyMiddleware:
 #
@@ -18,14 +19,18 @@ import src.db.inmemory.db
 #
 #         return response
 
-
 app = fastapi.FastAPI()
+
 # app.add_middleware(BaseHTTPMiddleware, dispatch=MyMiddleware())
-db = src.db.inmemory.db.InMemoryDatabase()
+db = src.db.postgres.db.PostgresDatabase(config=src.db.Database.Config(
+    dbname="postgres",
+    user="postgres",
+    host="localhost",
+    password=None
+))
 src.app.routes.register(app, db)
 
-
-# src.app.crons.start_background_tasks(app, db)
+src.crons.crons.start_background_tasks(app, db)
 
 
 def main():
