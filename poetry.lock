@@ -288,7 +288,7 @@ trio = ["trio (>=0.23)"]
 
 [[package]]
 name = "arqanmode"
-version = "0.0.12rc7"
+version = "0.0.12rc10"
 description = "rebuild with poetry"
 optional = false
 python-versions = "^3.12"

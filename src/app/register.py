@@ -1,4 +1,7 @@
+import json
+
 import fastapi
+from starlette.requests import Request
 
 import src.db
 import src.models.models
@@ -19,8 +22,11 @@ class Router:
                                   methods=['post'])
         pass
 
-    async def endpoint(self, req: src.models.models.RegisterInput):
-        print(type(req), req)
+    async def endpoint(self, req: Request):
+        # : src.models.models.RegisterInput
+        # print(type(req), req)
+
+        req = src.models.models.RegisterInput.model_validate(json.loads(await req.json()))
 
         inp = src.db.interface.CreateModelInput.model_validate({
             'model': {
