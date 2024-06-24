@@ -5,11 +5,11 @@ import uvicorn
 
 import src.app.routes
 import src.crons.crons
-import src.db.postgres.db
+import src.db.inmemory.db
 
 app = fastapi.FastAPI()
 
-db = src.db.postgres.db.PostgresDatabase(config=src.db.Database.Config(
+db = src.db.inmemory.db.InMemoryDatabase(config=src.db.Database.Config(
     dbname="postgres",
     user="postgres",
     host="localhost",

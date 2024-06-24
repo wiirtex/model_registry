@@ -37,8 +37,7 @@ def background_tasks(app: fastapi.FastAPI, db: src.db.Database):
 
 def check_active_models(app: fastapi.FastAPI, db: src.db.Database):
     models = db.list_active_models()
-    for model in models:
-        model = model[1]
+    for model in models.models:
         if model['port'] != '':
             url = f'http://localhost:{model['port']}/status/'
             response = None
